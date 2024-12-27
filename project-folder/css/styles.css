@@ -1,0 +1,299 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    padding-top: 0;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    color: #333;
+    position: relative;
+}
+
+/* Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 15px 30px; /* Adjusted padding for smaller screens */
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+
+header .logo {
+    font-size: 1.5rem; /* Reduced size for smaller screens */
+    font-family: 'Pacifico', cursive;
+    color: #fff;
+    text-decoration: none;
+}
+
+header .logo:hover {
+    color: #00bcd4;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nav-links a {
+    margin: 0 10px;
+}
+
+.nav-icon {
+    width: 25px; /* Adjusted for smaller screens */
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-links a:hover .nav-icon {
+    transform: scale(1.1);
+}
+
+/* Home Section */
+#home {
+    position: relative;
+    text-align: center;
+    background: linear-gradient(to bottom, #a600ff, #8c7de4 20%, #3b49df 40%, #0221d1 60%, #061874 80%);
+    color: #ffffff00;
+    padding: 50px;
+    overflow: hidden; /* Prevent the image from overflowing out of the section */
+}
+/* Default paragraph size for home section */
+#home p {
+    font-size: 2rem;
+    line-height: 1.8;
+    color: #00ff843b; /* Change the text color if needed */
+}
+
+/* Adjust font size for smaller screens (e.g., mobile) */
+@media (max-width: 768px) {
+    #home p {
+        font-size: 1.6rem;  /* Adjust to a smaller font size on mobile */
+        line-height: 1.5;  /* Adjust line height for readability on mobile */
+    }
+}
+
+#home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.home-content {
+    position: relative;
+    z-index: 10;
+}
+
+.home-content h1, .neon-text {
+    font-size: 2.5rem; /* Adjusted font size for smaller screens */
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 20;
+    color: #c90eee0f; /* Neon cyan color */
+    text-shadow: 0 0 5px #630392, 0 0 10px #4a035d, 0 0 15px #ff00ff, 
+    0 0 30px #ff00ff, 0 0 60px #ff00ff, 0 0 90px #ff00ff; /* Neon glow effect */
+    -webkit-text-stroke: 2px rgb(255, 255, 255); /* Black border around text */
+    animation: neonPulse 5s infinite ease-in-out; /* Pulsating glow animation */
+}
+
+/* Neon pulse animation */
+@keyframes neonPulse {
+    0%, 100% {
+        text-shadow: 0 0 5px #1e00ff, 0 0 10px #360af9, 0 0 20px #b700ff,
+                     0 0 40px #00ffff, 0 0 80px #00ffff;
+    }
+    50% {
+        text-shadow: 0 0 2px #0d00ff, 0 0 5px #003cff, 0 0 10px #1100ff,
+                     0 0 20px #0000ff, 0 0 40px #4400ff;
+    }
+}
+
+/* Rotating Image Styles */
+.rotating-image {
+    position: absolute; /* Now relative to #home section */
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0deg); /* Center and rotate */
+    width: 60vw;
+    height: auto;
+    transition: transform 0.2s ease-in-out;
+    z-index: 1;
+}
+
+/* Projects Section */
+#projects {
+    text-align: center;
+    background: linear-gradient(to bottom, #061874 ,#01034f 20%, #03001b 40%, #0a014d 60%, #061874 80%);
+    padding: 50px;
+    overflow: hidden;
+}
+
+.project-gallery {
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+    animation: scrollLeftToRight 30s linear infinite; /* Auto-scrolling effect */
+}
+
+.project-gallery img {
+    width: 250px; /* Reduced image size */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 10px; /* Optional: rounded corners */
+}
+
+.project-gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px #bb00ff, 0 0 20px #bb00ff, 0 0 40px #bb00ff, 0 0 80px #bb00ff;
+    border: 3px solid #00ffcc; /* Neon border effect */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    /* Smaller font size for h1 in home section */
+    .home-content h1 {
+        font-size: 2rem; /* Adjusted for smaller screens */
+    }
+
+    /* Adjust size of rotating PNG image */
+    .rotating-image {
+        width: 140vw; /* Decrease size for smaller screens */
+        top: 50%; /* Adjust top positioning for better alignment */
+    }
+
+    /* Reduce padding in home section */
+    #home {
+        padding: 20px;
+    }
+
+    /* Adjust the project gallery to a single column layout */
+    .project-gallery {
+        flex-direction: column;
+        gap: 10px; /* Reduce gap between images */
+        animation: none; /* Disable horizontal scroll on small screens */
+    }
+
+    .project-gallery img {
+        width: 80%; /* Adjust image width for smaller screens */
+        margin: 0 auto;
+    }
+
+    header .logo {
+        font-size: 1.2rem; /* Adjust logo size for small screens */
+    }
+
+    .nav-icon {
+        width: 20px; /* Adjust nav icon size for smaller screens */
+    }
+
+    .nav-links a {
+        margin: 0 8px; /* Adjust spacing between nav items */
+    }
+}
+
+/* Add scrolling effect for large screens */
+@keyframes scrollLeftToRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%); /* Scroll horizontally */
+    }
+}
+
+/* Contact Section */
+#contact {
+    text-align: center;
+    background: linear-gradient(to bottom, #061874, #0221d1 20%, #3b49df 40%, #f7a24a 60%, #ff7f50 80%);
+    padding: 50px;
+    position: relative;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+form input, form textarea, form button {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    background: #00bcd4;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+form button:hover {
+    background: #0288d1;
+}
+/* Neon styling for highlighted words */
+.highlighted-word {
+    font-size: 3rem; /* Make the word larger */
+    color: #ff00ff; /* Neon purple color */
+    text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 
+                 0 0 30px #ff00ff, 0 0 60px #ff00ff, 0 0 90px #ff00ff; /* Neon glow effect */
+    font-weight: bold;
+    display: inline-block; /* Ensure proper hover effect */
+    transition: transform 0.2s ease-in-out; /* Smooth transition for hover effects */
+}
+
+/* Add shake animation when hovered */
+.highlighted-word:hover {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Shake animation */
+@keyframes shake {
+    0% {
+        transform: translateX(0); /* Start at original position */
+    }
+    25% {
+        transform: translateX(-10px); /* Move left */
+    }
+    50% {
+        transform: translateX(10px); /* Move right */
+    }
+    75% {
+        transform: translateX(-10px); /* Move left again */
+    }
+    100% {
+        transform: translateX(0); /* Return to original position */
+    }
+}
